@@ -3,8 +3,12 @@ CREATE TABLE pdv.tb_usuarios (
     criado_em TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 
     nome VARCHAR(255) NOT NULL,
+    senha VARCHAR NOT NULL,
     ativo NUMERIC (1, 0) DEFAULT 1 NOT NULL,
     admin NUMERIC (1, 0) DEFAULT 0 NOT NULL,
+
+    senha_alterada_em DATE, 
+    otp_segredo VARCHAR(10), 
 
     PRIMARY KEY (id)
 ); 

@@ -1,24 +1,13 @@
 package main
 
 import (
-	"fmt"
+	"log"
 
-	"github.com/caarlos0/env/v11"
+	"github.com/simple-pdv/src/services"
 )
 
-type config struct {
-	Home string `env:"HOME"`
-  }
+func main() {
+	server := services.CreateServer();
 
-func main() { 
-
-	var cfg config
-	cfg, err := env.ParseAs[config]()
-
-	if err != nil {
-		panic(err);
-	}
-
-
-	fmt.Printf("%s \n", cfg.Home);
+	log.Fatal(server.ListenAndServe());
 }
