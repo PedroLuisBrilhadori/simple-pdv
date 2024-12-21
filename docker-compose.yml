@@ -1,0 +1,16 @@
+services:
+  db:
+    container_name: pg-simple
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+      PGPORT: ${DB_PORT}
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    volumes:
+      - ./volumes/create-database.sql:/docker-entrypoint-initdb.d/create-database.sql
